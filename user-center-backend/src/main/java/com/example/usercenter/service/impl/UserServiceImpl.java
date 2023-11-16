@@ -77,6 +77,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 2. 加密
         String newPwd = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
         User user = new User();
+        user.setUsername(userAccount);
         user.setUserAccount(userAccount);
         user.setUserPassword(newPwd);
         user.setUniverseCode(universeCode);
