@@ -3,10 +3,13 @@ export default [
     path: '/user',
     layout: false,
     routes: [
-      { path: '/user',routes:[
-      { name: '登录', path: '/user/login', component: './user/Login' },
-      { name: '注册', path: '/user/register', component: './user/Register' },  
-      ] },
+      {
+        path: '/user',
+        routes: [
+          { name: '登录', path: '/user/login', component: './user/Login' },
+          { name: '注册', path: '/user/register', component: './user/Register' },
+        ],
+      },
       { component: './404' },
     ],
   },
@@ -16,9 +19,14 @@ export default [
     name: '管理页',
     icon: 'crown',
     access: 'canAdmin',
-    component:'./Admin',
+    component: './Admin',
     routes: [
-      { path: '/admin/user-manage', name: '用户管理页', icon: 'smile', component: './Admin/UserManage' },
+      {
+        path: '/admin/user-manage',
+        name: '用户管理',
+        icon: 'smile',
+        component: './Admin/UserManage',
+      },
       { component: './404' },
     ],
   },
