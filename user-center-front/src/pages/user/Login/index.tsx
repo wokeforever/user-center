@@ -1,14 +1,7 @@
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
-import {
-  LockOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import {
-  LoginForm,
-  ProFormCheckbox,
-  ProFormText,
-} from '@ant-design/pro-components';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
 // import { SYSTEM_LOGO } from '@/constants';
 import { Alert, Divider, message, Space, Tabs } from 'antd';
 import React, { useState } from 'react';
@@ -97,7 +90,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined className={styles.prefixIcon} />,
                 }}
-                placeholder={'请输入账户'}
+                placeholder={'请输入账号'}
                 rules={[
                   {
                     required: true,
@@ -118,8 +111,8 @@ const Login: React.FC = () => {
                     message: '密码是必填项！',
                   },
                   {
-                    min : 6,
-                    type : 'string',
+                    min: 6,
+                    type: 'string',
                     message: '长度不能小于6！',
                   },
                 ]}
@@ -187,21 +180,21 @@ const Login: React.FC = () => {
               marginBottom: 24,
             }}
           >
-            <Space split={<Divider type="vertical"/>}>
-            <ProFormCheckbox noStyle name="autoLogin">
-              自动登录
-            </ProFormCheckbox>
-            <Link to="/user/register" >新用户注册</Link>
-            <a
-              style={{
-                float: 'right',
-              }}
-              href=''
-              target=''
-              rel=''
-            >
-              忘记密码
-            </a>
+            <Space split={<Divider type="vertical" />}>
+              <ProFormCheckbox noStyle name="autoLogin">
+                自动登录
+              </ProFormCheckbox>
+              <Link to="/user/register">新用户注册</Link>
+              <a
+                style={{
+                  float: 'right',
+                }}
+                href=""
+                target=""
+                rel=""
+              >
+                忘记密码
+              </a>
             </Space>
           </div>
         </LoginForm>

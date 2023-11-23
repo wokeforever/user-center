@@ -1,27 +1,21 @@
 import Footer from '@/components/Footer';
 import { register } from '@/services/ant-design-pro/api';
-import {
-  LockOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import {
-  LoginForm,
-  ProFormText,
-} from '@ant-design/pro-components';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
 // import { SYSTEM_LOGO } from '@/constants';
-import {  message, Tabs } from 'antd';
+import { message, Tabs, Space, Divider } from 'antd';
 import React, { useState } from 'react';
-import { history} from 'umi';
+import { history, Link } from 'umi';
 import styles from './index.less';
 
 const Register: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const handleSubmit = async (values: API.RegisterParams) => {
-    const { userPassword , checkPassword } = values ;
+    const { userPassword, checkPassword } = values;
     //校验
     if (userPassword !== checkPassword) {
       message.error('再次输入的密码不一致');
-      return ; 
+      return;
     }
     try {
       // 注册
@@ -33,12 +27,12 @@ const Register: React.FC = () => {
         if (!history) return;
         const { query } = history.location;
         history.push({
-          pathname :'login',
+          pathname: 'login',
           query,
         });
         return;
-      }else{
-          throw new Error('register error id = ${id}');
+      } else {
+        throw new Error('register error id = ${id}');
       }
     } catch (error) {
       const defaultLoginFailureMessage = '注册失败，请重试！';
@@ -50,9 +44,10 @@ const Register: React.FC = () => {
       <div className={styles.content}>
         <LoginForm
           submitter={{
-            searchConfig:{
-              submitText:  '注册'}
-            }}
+            searchConfig: {
+              submitText: '注册',
+            },
+          }}
           // logo={<img alt="logo" src={SYSTEM_LOGO} />}
           title="井水深宇宙中心"
           subTitle={'井水深，前程似锦'}
@@ -144,6 +139,15 @@ const Register: React.FC = () => {
                   },
                 ]}
               />
+              <div
+                style={{
+                  marginBottom: 24,
+                }}
+              >
+                <Space split={<Divider type="vertical" />}>
+                  <Link to="/user/login">返回</Link>
+                </Space>
+              </div>
             </>
           )}
         </LoginForm>

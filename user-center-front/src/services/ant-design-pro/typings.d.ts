@@ -3,26 +3,26 @@
 
 declare namespace API {
   type CurrentUser = {
-
-    userRole?: number,
-    id ?:number,
-    username ?:string,
-    userAccount  :string,
-    avatarUrl   ?:string,
-    gender      ?:number,
-    phone        ?:string,
-    email        ?:string,
-    userStatus   ?:number,
-    createTime   ?:Date,
+    userRole?: number;
+    id?: number;
+    username?: string;
+    userAccount: string;
+    avatarUrl?: string;
+    gender?: number;
+    phone?: string;
+    email?: string;
+    userStatus?: number;
+    createTime?: Date;
   };
 
   type LoginResult = {
     status?: string;
-    type?: string;s
+    type?: string;
+    s;
     currentAuthority?: string;
   };
 
-  type RegisterResult =  number;
+  type RegisterResult = number;
 
   type PageParams = {
     current?: number;
@@ -46,13 +46,12 @@ declare namespace API {
   /**
    * 通用返回类
    */
-  type BaseResponse<T> ={
-    code : number;
-    data : T;
-    message : string;
-    description : string;
-
-  }
+  type BaseResponse<T> = {
+    code: number;
+    data: T;
+    message: string;
+    description: string;
+  };
 
   type RuleList = {
     data?: RuleListItem[];
@@ -72,11 +71,26 @@ declare namespace API {
     autoLogin?: boolean;
     type?: string;
   };
+
+  type deleteParams = {
+    id?: number;
+    type?: string;
+  };
   type RegisterParams = {
     userAccount?: string;
     userPassword?: string;
     checkPassword?: boolean;
     universeCode?: string;
+    type?: string;
+  };
+  type addParams = {
+    username?: string;
+    userAccount?: string;
+    userPassword?: string;
+    checkPassword?: boolean;
+    universeCode?: string;
+    gender?: number;
+    userRole?: string;
     type?: string;
   };
 
@@ -95,7 +109,6 @@ declare namespace API {
     total?: number;
     success?: boolean;
   };
-  
 
   type NoticeIconItemType = 'notification' | 'message' | 'event';
 

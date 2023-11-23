@@ -1,7 +1,7 @@
 // @ts-ignore
 /* eslint-disable */
 // import { request } from 'umi';
-import  request from '@/plugins/globalRequest'
+import request from '@/plugins/globalRequest';
 /** 获取当前的用户 GET /api/user/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
   return request<API.BaseResponse<API.CurrentUser>>('/api/user/currentUser', {
@@ -29,6 +29,29 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
     ...(options || {}),
   });
 }
+/** 登录接口 POST /api/user/delete */
+export async function deleteById(body: API.CurrentUser, options?: { [key: string]: any }) {
+  return request<API.BaseResponse<Boolean>>('/api/user/delete', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+/** 此处后端没有提供注释 POST /api/user/update */
+export async function updateById(body: API.CurrentUser, options?: { [key: string]: any }) {
+  return request<API.BaseResponse<API.CurrentUser>>('/api/user/update', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** 登录接口 POST /api/user/register */
 export async function register(body: API.RegisterParams, options?: { [key: string]: any }) {
   return request<API.BaseResponse<API.RegisterResult>>('/api/user/register', {

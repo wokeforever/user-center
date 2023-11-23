@@ -106,14 +106,14 @@ public class UserController {
     }
 
     @PostMapping("/delete")
-    public BaseResponse<Boolean> userDelete(@RequestBody Long id,HttpServletRequest request){
+    public BaseResponse<Boolean> userDelete(@RequestBody User user,HttpServletRequest request){
         if (!isAdmin(request)){
             throw new BusinessException(ErrorCode.NO_AUTH);
         }
-        if ( id <= 0 ){
+        if ( user.getId() <= 0 ){
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        boolean b = userService.removeById(id);
+        boolean b = userService.removeById(user.getId());
         return ResultUtils.success(b);
     }
 
@@ -123,4 +123,9 @@ public class UserController {
         return user != null && user.getUserRole() == ADMIN_ROLE;
     }
 
+    @PostMapping("/update")
+    public BaseResponse<Boolean> userUpdate(@RequestBody User user){
+        boolean b = userService.updateById(user);
+        return ResultUtils.success(b);
+    }
 }
